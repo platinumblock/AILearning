@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>A.I.</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <a href="index.html" id="home">
+      <img src="home.png" id="homeIcon">
+    </a>
+    <div id="ai"></div>
+    <div id="attempt" style="display:none;">Attempt 1</div>
+    <div id="controlPanel"></div>
+    <div id="controlPanel2"></div>
+    <button onclick="start()" id="start">Start</button>
+    <div id="text2">Grid Dimensions</div>
+    <input type="text" id="gridWidth" value="8">
+    <div id="text3">X</div>
+    <input type="text" id="gridHeight" value="8">
+    <button onclick="updateGrid()" id="updateGrid">Update</button>
+
+    <div id="text">Iteration Level</div>
+    <button onclick="setSize(500)" class="set" style="left:85%;"></button>
+    <div class="label" style="left:85.3%">5s</div>
+    <button onclick="setSize(2000)" class="set" style="left:89%;background-color:rgb(33, 109, 201)"></button>
+    <div class="label" style="left:89%">20s</div>
+    <button onclick="setSize(12000)" class="set" style="left:93%;"></button>
+    <div class="label" style="left:93.15%">2m</div>
+    <div id="panel" style="display:none;">
+      <div id="loadingPercentage">0%</div>
+      <div id="loadingBarShell"></div>
+      <div id="loadingBar"></div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+  <script src="simulation.js"></script>
+  </body>
+</html>
