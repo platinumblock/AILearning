@@ -119,7 +119,7 @@ function setupStartPosition(){
     for(var i=0;i<theMap.length;i++){
         for(var k=0;k<theMap[i].length;k++){
             if(theMap[i][k]=="X"){
-                startingPosition=[i,k];
+                startingPosition=[k,i];
                 break;
             }
         }
@@ -246,12 +246,32 @@ async function run(first,last){
             position[1]--;
             record.push(2);
             previous="U";
-        }else{ //DOWN
+        }else if(choice>=odds[0]+odds[1]+odds[2] && choice<odds[0]+odds[1]+odds[2]+odds[3]){ //DOWN
             position[1]++;
             record.push(3);
             previous="D";
+        }else{
+            if(previous=="R"){
+                position[0]--;
+                record.push(1);
+                previous="L";
+            }
+            else if(previous=="L"){
+                position[0]++;
+                record.push(0);
+                previous="R";
+            }
+            else if(previous=="U"){
+                position[1]++;
+                record.push(3);
+                previous="D";
+            }
+            else if(previous=="D"){
+                position[1]--;
+                record.push(2);
+                previous="U";
+            }
         }
-
         steps++;
         if(map[position[1]][position[0]]=="E"){
             reachedEnd=true;
@@ -268,7 +288,6 @@ async function run(first,last){
         for(var i=0;i<record.length;i++){
             moveOdds[i][record[i]]+=(perfectSteps/steps)*2;
         }
-        
     }
     totalCounter++;
     if(totalCounter%(nIterations/100)==0){
